@@ -1,34 +1,47 @@
-package com.lambdaschool.orders;
+package com.lambdaschool.javaorders;
 
-import com.lambdaschool.orders.model.Agents;
-import com.lambdaschool.orders.model.Customers;
-import com.lambdaschool.orders.model.Orders;
-import com.lambdaschool.orders.repos.AgentsRepository;
-import com.lambdaschool.orders.repos.CustomersRepository;
-import com.lambdaschool.orders.repos.OrdersRepository;
+import com.lambdaschool.javaorders.model.Agents;
+import com.lambdaschool.javaorders.service.AgentService;
+import com.lambdaschool.javaorders.model.Agents;
+import com.lambdaschool.javaorders.model.Customers;
+import com.lambdaschool.javaorders.model.Orders;
+import com.lambdaschool.javaorders.repos.AgentsRepository;
+import com.lambdaschool.javaorders.repos.CustomersRepository;
+import com.lambdaschool.javaorders.repos.OrdersRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+
 @Transactional
 @Component
-public class SeedData implements CommandLineRunner
-{
-    private CustomersRepository custrepos;
-    private AgentsRepository agentrepos;
-    private OrdersRepository ordersrepos;
 
-    public SeedData(CustomersRepository custrepos, AgentsRepository agentrepos, OrdersRepository ordersrepos)
-    {
+public class SeedData implements CommandLineRunner {
+  /* private CustomersRepository custrepos;
+    private AgentsRepository agentrepos;
+   private OrdersRepository ordersrepos;
+
+    public SeedData(CustomersRepository custrepos, AgentsRepository agentrepos, OrdersRepository ordersrepos) {
         this.custrepos = custrepos;
         this.agentrepos = agentrepos;
         this.ordersrepos = ordersrepos;
-    }
+    }*/
+
+  @Autowired
+    AgentService agentService;
+
+    //public ArrayList<Agents> agentList=new ArrayList<Agents>();
 
     @Override
-    public void run(String... args) throws Exception
-    {
-        Agents a01 = new Agents("Ramasundar", "Bangalore", 0.15, "077-25814763", "");
+    public void run(String... args) throws Exception {
+        String agent1Name="James";
+        Agents a1=new Agents(agent1Name,"London",0.20,"414-444-4444","UK");
+
+        agentService.save(a1);
+
+       /* Agents a01 = new Agents("Ramasundar", "Bangalore", 0.15, "077-25814763", "");
         Agents a02 = new Agents("Alex ", "London", 0.13, "075-12458969", "");
         Agents a03 = new Agents("Alford", "New York", 0.12, "044-25874365", "");
         Agents a04 = new Agents("Ravi Kumar", "Bangalore", 0.15, "077-45625874", "");
@@ -41,7 +54,7 @@ public class SeedData implements CommandLineRunner
         Agents a11 = new Agents("Ivan", "Torento", 0.15, "008-22544166", "");
         Agents a12 = new Agents("Benjamin", "Hampshair", 0.11, "008-22536178", "");
 
-        Customers c01 = new Customers("Holmes", "London", "London", "UK", "2", 6000.00, 5000.00, 7000.00, 4000.00, "BBBBBBB", a03);
+      /*  Customers c01 = new Customers("Holmes", "London", "London", "UK", "2", 6000.00, 5000.00, 7000.00, 4000.00, "BBBBBBB", a03);
         Customers c02 = new Customers("Micheal", "New York", "New York", "USA", "2", 3000.00, 5000.00, 2000.00, 6000.00, "CCCCCCC", a08);
         Customers c03 = new Customers("Albert", "New York", "New York", "USA", "3", 5000.00, 7000.00, 6000.00, 6000.00, "BBBBSBB", a08);
         Customers c04 = new Customers("Ravindran", "Bangalore", "Bangalore", "India", "2", 5000.00, 7000.00, 4000.00, 8000.00, "AVAVAVA", a11);
@@ -53,7 +66,7 @@ public class SeedData implements CommandLineRunner
         Customers c10 = new Customers("Yearannaidu", "Chennai", "Chennai", "India", "1", 8000.00, 7000.00, 7000.00, 8000.00, "ZZZZBFV", a10);
         Customers c11 = new Customers("Sasikant", "Mumbai", "Mumbai", "India", "1", 7000.00, 11000.00, 7000.00, 11000.00, "147-25896312", a02);
         Customers c12 = new Customers("Ramanathan", "Chennai", "Chennai", "India", "1", 7000.00, 11000.00, 9000.00, 9000.00, "GHRDWSD", a10);
-        Customers c13 = new Customers("Avinash", "Mumbai", "Mumbai", "India", "2", 7000.00, 11000.00, 9000.00, 9000.00, "113-12345678",a02);
+        Customers c13 = new Customers("Avinash", "Mumbai", "Mumbai", "India", "2", 7000.00, 11000.00, 9000.00, 9000.00, "113-12345678", a02);
         Customers c14 = new Customers("Winston", "Brisban", "Brisban", "Australia", "1", 5000.00, 8000.00, 7000.00, 6000.00, "AAAAAAA", a05);
         Customers c15 = new Customers("Karl", "London", "London", "UK", "0", 4000.00, 6000.00, 7000.00, 3000.00, "AAAABAA", a06);
         Customers c16 = new Customers("Shilton", "Torento", "Torento", "Canada", "1", 10000.00, 7000.00, 6000.00, 11000.00, "DDDDDDD", a04);
@@ -130,6 +143,6 @@ public class SeedData implements CommandLineRunner
         ordersrepos.save(o09);
         ordersrepos.save(o10);
         ordersrepos.save(o11);
-        ordersrepos.save(o12);
+        ordersrepos.save(o12);*/
     }
 }
